@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rock Paper Scissor Game</title>
+</head>
+<body>
+   
+    <div id="modal-wrapper">
+        <h1>Rock Paper Scissor</h1>
+        <button id="rock" class="Btn" onclick=rockFunc()>Rock</button>
+            
+        <button id="paper" class="Btn" onclick=paperFunc()>Paper</button>
+        <button id="scissor" class="Btn" onclick=scissorFunc()>Scissor</button>
+        <div id="result">
+            <h3 id="statement1">You:</h3>
+            <h3 id="statement2">Computer:</h3>
+            <h3 id="statement3">Conclusion</h3>
+        </div>
+    </div>
+
+    <div id="overlay" onclick="changeStyle()">
+        <button id="btn-start">Start</button>
+    </div>
+   
+
+   
+
+   <script>
+        let randomNum;
+        let shouldPrevent = true;
+        function changeStyle(){
+            shouldPrevent = false;
+            document.querySelector('#overlay').style.display ="none";
+            document.querySelector('#modal-wrapper').style.backgroundColor = 'rgb(230, 188, 21)';
+            document.querySelector('#modal-wrapper').style.opacity = "1";
+            document.querySelectorAll('.Btn').forEach(button => {
+                button.style.backgroundColor = 'rgb(61, 168, 7)';
+            });
+            document.querySelectorAll('.Btn').forEach(button => {
+                button.style.opacity = '0.8';
+            });             
+            document.querySelectorAll('.Btn').forEach(button => {
+                button.style.cursor = 'pointer';
+            });
+        }
+
+        function rockFunc(e){
+            if(shouldPrevent){
+                e.preventDefault();
+            }
+            else{
+                randomNum = Math.ceil(Math.random() * 3);
+            console.log(randomNum);
+            if(randomNum == 1){ 
+                document.querySelector('#result').style.display = 'block';   
+                document.querySelector('#statement1').innerHTML = 'You: Rock 🪨';
+                document.querySelector('#statement2').innerHTML = 'Computer: Rock 🪨';
+                document.querySelector('#statement3').innerHTML = 'It is DRAW 🫱🏽‍🫲🏼';
+            }
+            else if(randomNum == 2){
+                document.querySelector('#result').style.display = 'block';
+                document.querySelector('#statement1').innerHTML = 'You: Rock 🪨';
+                document.querySelector('#statement2').innerHTML = 'Computer: Paper 📃';
+                document.querySelector('#statement3').innerHTML = 'You lost it borther 🥲';
+            }
+            else{
+                document.querySelector('#result').style.display = 'block';
+                document.querySelector('#statement1').innerHTML = 'You: Rock 🪨';
+                document.querySelector('#statement2').innerHTML = 'Computer: Scissor ✂️';
+                document.querySelector('#statement3').innerHTML = 'Congratulation borther you won 😄🎉';
+            }
+            }
+        }
+
+        function paperFunc(e){
+            if(shouldPrevent){
+                e.preventDefault();
+            }
+            else{
+                randomNum = Math.ceil(Math.random() * 3);
+        console.log(randomNum);
+        if(randomNum == 1){ 
+            document.querySelector('#result').style.display = 'block';   
+            document.querySelector('#statement1').innerHTML = 'You: Paper 📃';
+            document.querySelector('#statement2').innerHTML = 'Computer: Paper 📃';
+            document.querySelector('#statement3').innerHTML = 'It is DRAW 🫱🏽‍🫲🏼';
+        }
+        else if(randomNum == 2){
+            document.querySelector('#result').style.display = 'block';
+            document.querySelector('#statement1').innerHTML = 'You: Paper 📃';
+            document.querySelector('#statement2').innerHTML = 'Computer: Scissor ✂️';
+            document.querySelector('#statement3').innerHTML = 'You lost it borther 🥲';
+        }
+        else{
+            document.querySelector('#result').style.display = 'block';
+            document.querySelector('#statement1').innerHTML = 'You: Paper 📃';
+            document.querySelector('#statement2').innerHTML = 'Computer: Rock 🪨';
+            document.querySelector('#statement3').innerHTML = 'Congratulation borther you won 😄🎉';
+        }
+            }
+        }
+
+        function scissorFunc(e){
+            if(shouldPrevent){
+                e.preventDefault();
+            }
+            else{
+                randomNum = Math.ceil(Math.random() * 3);
+        console.log(randomNum);
+        if(randomNum == 1){ 
+            document.querySelector('#result').style.display = 'block';   
+            document.querySelector('#statement1').innerHTML = 'You: Scissor ✂️';
+            document.querySelector('#statement2').innerHTML = 'Computer: Scissor ✂️';
+            document.querySelector('#statement3').innerHTML = 'It is DRAW 🫱🏽‍🫲🏼';
+        }
+        else if(randomNum == 2){
+            document.querySelector('#result').style.display = 'block';
+            document.querySelector('#statement1').innerHTML = 'You: Scissor ✂️';
+            document.querySelector('#statement2').innerHTML = 'Computer: Rock 🪨';
+            document.querySelector('#statement3').innerHTML = 'You lost it borther 🥲';
+        }
+        else{
+            document.querySelector('#result').style.display = 'block';
+            document.querySelector('#statement1').innerHTML = 'You: Scissor ✂️';
+            document.querySelector('#statement2').innerHTML = 'Computer: Paper 📃';
+            document.querySelector('#statement3').innerHTML = 'Congratulation borther you won 😄🎉';
+        }
+    }
+    }
+        
+    </script>
+</body>
+</html>

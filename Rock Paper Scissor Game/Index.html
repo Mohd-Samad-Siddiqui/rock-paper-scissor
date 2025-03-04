@@ -19,6 +19,13 @@
             <h3 id="statement2">Computer:</h3>
             <h3 id="statement3">Conclusion</h3>
         </div>
+
+        <div id="stats">
+            <h3 id="youWon">You:</h3>
+            <h3 id="computerWon">Computer:</h3>
+            <h3 id="draw">Draw:</h3>
+            <h3 id="totalGames">Total Games:</h3>
+        </div>
     </div>
 
     <div id="overlay" onclick="changeStyle()">
@@ -30,7 +37,25 @@
 
    <script>
         let randomNum;
+        let gameStats = {
+            you: 0,
+            computer: 0,
+            draw: 0,
+            get totalGame() {
+                return this.you + this.computer + this.draw;
+            } 
+        }
         let shouldPrevent = true;
+
+        function updateStats(){
+            document.querySelector('#result').style.display = 'block';
+            document.querySelector('#stats').style.display = "block";
+            document.querySelector('#youWon').innerHTML = `You: ${gameStats.you}`;
+            document.querySelector('#computerWon').innerHTML = `Computer: ${gameStats.computer}`;
+            document.querySelector('#draw').innerHTML = `Draw: ${gameStats.draw}`;
+            document.querySelector('#totalGames').innerHTML = `Total Games: ${gameStats.totalGame}`;
+        }
+
         function changeStyle(){
             shouldPrevent = false;
             document.querySelector('#overlay').style.display ="none";
@@ -53,24 +78,29 @@
             }
             else{
                 randomNum = Math.ceil(Math.random() * 3);
-            console.log(randomNum);
             if(randomNum == 1){ 
-                document.querySelector('#result').style.display = 'block';   
                 document.querySelector('#statement1').innerHTML = 'You: Rock 🪨';
                 document.querySelector('#statement2').innerHTML = 'Computer: Rock 🪨';
-                document.querySelector('#statement3').innerHTML = 'It is DRAW 🫱🏽‍🫲🏼';
+                document.querySelector('#statement3').innerHTML = 'It is a DRAW 🫱🏽‍🫲🏼';
+                gameStats.draw++;
+                console.log(gameStats.draw);
+                updateStats();
             }
             else if(randomNum == 2){
-                document.querySelector('#result').style.display = 'block';
                 document.querySelector('#statement1').innerHTML = 'You: Rock 🪨';
                 document.querySelector('#statement2').innerHTML = 'Computer: Paper 📃';
-                document.querySelector('#statement3').innerHTML = 'You lost it borther 🥲';
+                document.querySelector('#statement3').innerHTML = 'You lost it brother 🥲';
+                gameStats.computer++;
+                console.log(gameStats.computer);
+                updateStats();
             }
             else{
-                document.querySelector('#result').style.display = 'block';
                 document.querySelector('#statement1').innerHTML = 'You: Rock 🪨';
                 document.querySelector('#statement2').innerHTML = 'Computer: Scissor ✂️';
-                document.querySelector('#statement3').innerHTML = 'Congratulation borther you won 😄🎉';
+                document.querySelector('#statement3').innerHTML = 'Congratulation brother you won 😄🎉';
+                gameStats.you++;
+                console.log(gameStats.you);
+                updateStats();
             }
             }
         }
@@ -81,24 +111,26 @@
             }
             else{
                 randomNum = Math.ceil(Math.random() * 3);
-        console.log(randomNum);
         if(randomNum == 1){ 
-            document.querySelector('#result').style.display = 'block';   
             document.querySelector('#statement1').innerHTML = 'You: Paper 📃';
             document.querySelector('#statement2').innerHTML = 'Computer: Paper 📃';
-            document.querySelector('#statement3').innerHTML = 'It is DRAW 🫱🏽‍🫲🏼';
+            document.querySelector('#statement3').innerHTML = 'It is a DRAW 🫱🏽‍🫲🏼';
+            gameStats.draw++;
+            updateStats();
         }
         else if(randomNum == 2){
-            document.querySelector('#result').style.display = 'block';
             document.querySelector('#statement1').innerHTML = 'You: Paper 📃';
             document.querySelector('#statement2').innerHTML = 'Computer: Scissor ✂️';
-            document.querySelector('#statement3').innerHTML = 'You lost it borther 🥲';
+            document.querySelector('#statement3').innerHTML = 'You lost it brother 🥲';
+            gameStats.computer++;
+            updateStats();
         }
         else{
-            document.querySelector('#result').style.display = 'block';
             document.querySelector('#statement1').innerHTML = 'You: Paper 📃';
             document.querySelector('#statement2').innerHTML = 'Computer: Rock 🪨';
-            document.querySelector('#statement3').innerHTML = 'Congratulation borther you won 😄🎉';
+            document.querySelector('#statement3').innerHTML = 'Congratulation brother you won 😄🎉';
+            gameStats.you++;
+            updateStats();
         }
             }
         }
@@ -109,24 +141,26 @@
             }
             else{
                 randomNum = Math.ceil(Math.random() * 3);
-        console.log(randomNum);
         if(randomNum == 1){ 
-            document.querySelector('#result').style.display = 'block';   
             document.querySelector('#statement1').innerHTML = 'You: Scissor ✂️';
             document.querySelector('#statement2').innerHTML = 'Computer: Scissor ✂️';
-            document.querySelector('#statement3').innerHTML = 'It is DRAW 🫱🏽‍🫲🏼';
+            document.querySelector('#statement3').innerHTML = 'It is a DRAW 🫱🏽‍🫲🏼';
+            gameStats.draw++;
+            updateStats();
         }
         else if(randomNum == 2){
-            document.querySelector('#result').style.display = 'block';
             document.querySelector('#statement1').innerHTML = 'You: Scissor ✂️';
             document.querySelector('#statement2').innerHTML = 'Computer: Rock 🪨';
-            document.querySelector('#statement3').innerHTML = 'You lost it borther 🥲';
+            document.querySelector('#statement3').innerHTML = 'You lost it brother 🥲';
+            gameStats.computer++;
+            updateStats();
         }
         else{
-            document.querySelector('#result').style.display = 'block';
             document.querySelector('#statement1').innerHTML = 'You: Scissor ✂️';
             document.querySelector('#statement2').innerHTML = 'Computer: Paper 📃';
-            document.querySelector('#statement3').innerHTML = 'Congratulation borther you won 😄🎉';
+            document.querySelector('#statement3').innerHTML = 'Congratulation brother you won 😄🎉';
+            gameStats.you++;
+            updateStats();
         }
     }
     }
